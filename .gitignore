@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# JetBrains
+.idea
+
+# VS Code
+.vscode
+
+# MySQL
+/mysql/
+
+# Composer
+/vendor/
+composer.phar
+
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+storage/*.key
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache

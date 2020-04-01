@@ -2,30 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Laravel\Lumen\Http\ResponseFactory;
+
 class ConcertController extends Controller
 {
-    public function create($concert)
+    /**
+     * @return string
+     */
+    public function index()
     {
-        return 'Create a Concert';
+        return response()->json('index concerts');
     }
 
-    public function readAll()
+    /**
+     * @param Request $request
+     * @return string
+     */
+    public function store(Request $request)
     {
-        return 'Get all Concerts';
+        return response()->json('store concert');
     }
 
-    public function read($id)
+    /**
+     * @param int $id
+     * @return string
+     */
+    public function show($id)
     {
-        return 'Get Concert with ID: ' . $id;
+        return response()->json('show concert with ID: ' . $id);
     }
 
-    public function update($concert)
+    /**
+     * @param Request $request
+     * @return string
+     */
+    public function update(Request $request)
     {
-        return 'Update a Concert';
+        return response()->json('update concert with ID: ' . $request->id);
     }
 
-    public function delete($id)
+    /**
+     * @param int $id
+     * @return string
+     */
+    public function destroy($id)
     {
-        return 'Delete a Concert';
+        return response()->json('destroy concert with ID: ' . $id);
     }
 }

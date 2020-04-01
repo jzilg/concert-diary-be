@@ -15,5 +15,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/concerts', 'ConcertController@readAll');
-$router->get('/concerts/{id}', 'ConcertController@read');
+$router->get('/concerts', 'ConcertController@index');
+$router->post('/concerts', 'ConcertController@store');
+$router->get('/concerts/{id}', 'ConcertController@show');
+$router->put('/concerts/{concert}', 'ConcertController@update');
+$router->delete('/concerts/{id}', 'ConcertController@destroy');

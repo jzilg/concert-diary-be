@@ -14,3 +14,6 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/concerts', 'ConcertController@readAll');
+$router->get('/concerts/{id}', 'ConcertController@read');

@@ -12,6 +12,7 @@ services:
         restart: unless-stopped
         volumes:
             - ./src:/var/www/html/
+            - ./apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
         networks:
             - lumen
         ports:

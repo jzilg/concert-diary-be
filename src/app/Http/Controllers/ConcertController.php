@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel\Lumen\Http\Response;
 use Laravel\Lumen\Http\ResponseFactory;
 use App\Concert;
 
@@ -51,6 +52,9 @@ class ConcertController extends Controller
      */
     public function destroy($id)
     {
-        return response()->json('destroy concert with ID: ' . $id);
+        $concert = Concert::find($id);
+        $concert->delete();
+
+        return response('',204);
     }
 }

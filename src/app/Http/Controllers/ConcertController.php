@@ -64,14 +64,14 @@ class ConcertController extends Controller
     }
 
     /**
-     * @param int $id
-     * @return string
+     * @param $id
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      */
     public function destroy($id)
     {
         $concert = Concert::find($id);
         $concert->delete();
 
-        return response('',204);
+        return response(null,204);
     }
 }

@@ -24,7 +24,15 @@ class ConcertController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json('store concert');
+        $concert = new Concert;
+
+        $concert->band = $request->input('band');
+        $concert->date = $request->input('date');
+        $concert->location = $request->input('location');
+
+        $concert->save();
+
+        return response($concert, 201);
     }
 
     /**
@@ -44,7 +52,15 @@ class ConcertController extends Controller
      */
     public function update(Request $request)
     {
-        return response()->json('update concert with ID: ' . $request->id);
+        $concert = Concert::find($request->input('id'));
+
+        $concert->band = $request->input('band');
+        $concert->date = $request->input('date');
+        $concert->location = $request->input('location');
+
+        $concert->save();
+
+        return response($concert, 200);
     }
 
     /**

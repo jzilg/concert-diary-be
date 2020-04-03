@@ -18,5 +18,5 @@ $router->get('/', function () use ($router) {
 $router->get('/concerts', 'ConcertController@index');
 $router->post('/concerts', 'ConcertController@store');
 $router->get('/concerts/{id}', 'ConcertController@show');
-$router->put('/concerts/{concert}', 'ConcertController@update');
+$router->put('/concerts', 'ConcertController@update');
 $router->delete('/concerts/{id}', 'ConcertController@destroy');

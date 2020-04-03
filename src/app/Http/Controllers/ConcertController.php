@@ -15,6 +15,7 @@ class ConcertController extends Controller
     public function index()
     {
         $concerts = Concert::all();
+
         return response()->json($concerts);
     }
 
@@ -34,6 +35,7 @@ class ConcertController extends Controller
     public function show($id)
     {
         $concert = Concert::find($id);
+
         return response()->json($concert);
     }
 

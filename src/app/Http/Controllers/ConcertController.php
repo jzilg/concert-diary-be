@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel\Lumen\Http\Response;
-use Laravel\Lumen\Http\ResponseFactory;
 use App\Concert;
 
 class ConcertController extends Controller

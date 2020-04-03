@@ -13,6 +13,12 @@ Start and setup Docker containers
 docker-compose up -d --build
 ```
 
+Install dependencies
+
+```shell
+docker-compose run --rm composer install
+```
+
 Create table and fill with demo data
 
 ```shell

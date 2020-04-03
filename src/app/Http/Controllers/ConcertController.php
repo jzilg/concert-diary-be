@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel\Lumen\Http\ResponseFactory;
+use App\Concert;
 
 class ConcertController extends Controller
 {
@@ -12,7 +13,8 @@ class ConcertController extends Controller
      */
     public function index()
     {
-        return response()->json('index concerts');
+        $concerts = Concert::all();
+        return response()->json($concerts);
     }
 
     /**
@@ -30,7 +32,8 @@ class ConcertController extends Controller
      */
     public function show($id)
     {
-        return response()->json('show concert with ID: ' . $id);
+        $concert = Concert::find($id);
+        return response()->json($concert);
     }
 
     /**

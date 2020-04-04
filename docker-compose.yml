@@ -42,9 +42,7 @@ services:
         networks:
             - lumen
     artisan:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        image: php:7.4
         container_name: artisan
         volumes:
             - ./src:/var/www/html

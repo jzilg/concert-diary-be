@@ -15,8 +15,12 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/concerts', 'ConcertController@index');
-$router->post('/concerts', 'ConcertController@store');
-$router->get('/concerts/{id}', 'ConcertController@show');
-$router->put('/concerts', 'ConcertController@update');
-$router->delete('/concerts/{id}', 'ConcertController@destroy');
+$router->post('/login', 'AuthController@login');
+
+$router->group(['middleware' => 'auth'], function ($router) {
+    $router->get('/concerts', 'ConcertController@index');
+    $router->post('/concerts', 'ConcertController@store');
+    $router->get('/concerts/{id}', 'ConcertController@show');
+    $router->put('/concerts', 'ConcertController@update');
+    $router->delete('/concerts/{id}', 'ConcertController@destroy');
+});

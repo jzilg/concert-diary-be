@@ -26,7 +26,7 @@ class ConcertController extends Controller
             self::concertToJson($concert);
         }
 
-        return response()->json($concerts);
+        return response($concerts);
     }
 
     /**
@@ -57,9 +57,13 @@ class ConcertController extends Controller
     public function show($id)
     {
         $concert = Concert::find($id);
-        self::concertToJson($concert);
 
-        return response()->json($concert);
+        if ($concert) {
+            self::concertToJson($concert);
+            return response()->json($concert);
+        }
+
+        return response()->json('Concert with ID ' . $id . ' not found', 404);
     }
 
     /**
@@ -85,13 +89,13 @@ class ConcertController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     * @return string
      */
     public function destroy($id)
     {
         $concert = Concert::find($id);
         $concert->delete();
 
-        return response(null,204);
+        return response()->json('Concert with ID ' . $id . ' deleted');
     }
 }

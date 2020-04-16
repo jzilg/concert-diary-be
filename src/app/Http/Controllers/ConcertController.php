@@ -3,17 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Laravel\Lumen\Http\Response;
 use App\Concert;
 
 class ConcertController extends Controller
 {
+    private static function concertToJson($concert)
+    {
+        $concert->supportBands = explode(',', $concert->supportBands);
+        $concert->companions = explode(',', $concert->companions);
+
+        return $concert;
+    }
+
     /**
      * @return string
      */
     public function index()
     {
         $concerts = Concert::all();
+
+        foreach ($concerts as $concert) {
+            self::concertToJson($concert);
+        }
 
         return response()->json($concerts);
     }
@@ -28,9 +39,13 @@ class ConcertController extends Controller
 
         $concert->band = $request->input('band');
         $concert->date = $request->input('date');
+        $concert->supportBands = implode(',', $request->input('supportBands'));
         $concert->location = $request->input('location');
+        $concert->companions = implode(',', $request->input('companions'));
 
         $concert->save();
+
+        self::concertToJson($concert);
 
         return response($concert, 201);
     }
@@ -42,6 +57,7 @@ class ConcertController extends Controller
     public function show($id)
     {
         $concert = Concert::find($id);
+        self::concertToJson($concert);
 
         return response()->json($concert);
     }
@@ -56,9 +72,13 @@ class ConcertController extends Controller
 
         $concert->band = $request->input('band');
         $concert->date = $request->input('date');
+        $concert->supportBands = implode(',', $request->input('supportBands'));
         $concert->location = $request->input('location');
+        $concert->companions = implode(',', $request->input('companions'));
 
         $concert->save();
+
+        self::concertToJson($concert);
 
         return response($concert, 200);
     }

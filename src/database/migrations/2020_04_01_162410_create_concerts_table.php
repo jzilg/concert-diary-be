@@ -17,7 +17,9 @@ class CreateConcertsTable extends Migration
             $table->id();
             $table->string('band');
             $table->string('date');
+            $table->string('supportBands');
             $table->string('location');
+            $table->string('companions');
             $table->timestamps();
         });
     }
